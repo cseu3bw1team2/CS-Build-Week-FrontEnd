@@ -41,7 +41,7 @@ export const removeWithAuth = (url) => {
 
     return axiosAuth(options)
 }
-//
+
 export const get = (url,params) => {
     let options = {
         method: 'GET',
