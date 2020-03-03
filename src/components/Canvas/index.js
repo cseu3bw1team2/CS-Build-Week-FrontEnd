@@ -5,6 +5,7 @@ class Canvas extends React.Component {
 
     constructor(props) {
         super(props);
+        console.log('init componet')
         this.state = {
             rooms:[
                 {
@@ -21,7 +22,7 @@ class Canvas extends React.Component {
                     n_to: null,
                     e_to: 'overview',
                     w_to: null,
-                    e_to:null,
+                    s_to:null,
                 },
     
             ],
@@ -29,6 +30,7 @@ class Canvas extends React.Component {
                 uuid: 1,
                 name:'test1',
                 title: 'foyer',
+                n_to: null,
                 s_to: 'overview',
                 w_to: null,
                 e_to:null,
@@ -51,7 +53,9 @@ class Canvas extends React.Component {
                 //     e_to:null,
                 // },
     
-            ]
+            ],
+
+            mimick:false
         }
 
         this.step = 20;
@@ -66,6 +70,11 @@ class Canvas extends React.Component {
             lineWidth: 80,
             lineHeight: 1
         }
+        this.count = 0
+    }
+
+    componentDidUpdate(){
+console.log("i updated")
     }
 
     componentDidMount() {
@@ -73,12 +82,13 @@ class Canvas extends React.Component {
 
       if (this.canvas.getContext) {
           this.ctx = this.canvas.getContext('2d');
-          this.renderRoomsToMap()
+        //   this.renderRoomsToMap()
 
        }
       }
 
       renderRoomsToMap = () => {
+
         const coord = {
             x: 320,
             y: 200
@@ -88,6 +98,7 @@ class Canvas extends React.Component {
         this.placePoint({x:370, y:200})
         this.placePoint({x:370, y:150})
         this.placePoint({x:320, y:150})
+        console.log(this.count)
 
 
       }
@@ -161,7 +172,7 @@ class Canvas extends React.Component {
         <div>
           <canvas  ref="canvas" width={640} height={400} />
           {/* <img ref="image" src={bg} className="hidden" /> */}
-          <button onClick={this.move}>move</button>
+          <button onClick={this.renderRoomsToMap}>render</button>
         </div>
       )
     }

@@ -4,7 +4,8 @@ class Room {
     constructor(props) {
         this.name = props.name;
         this.description = props.description;
-        this.position = new Node(0, 0)
+        this.position = new Node(0, 0);
+        this.players = [] // an array of players cuurently in the room
         this.n_to = null;
         this.s_to = null;
         this.w_to =  null;
