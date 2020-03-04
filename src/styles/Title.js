@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Title = styled.h1`
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Trade Winds', cursive;
     font-size: 60px;
     // font-weight: bold;
     text-align: center;
