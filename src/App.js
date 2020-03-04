@@ -3,7 +3,6 @@ import { Switch, Route } from 'react-router-dom';
 import './App.css';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
-import Canvas from './components/Canvas';
 import Game from './components/Canvas/Game'
 
 function App() {
@@ -14,7 +13,6 @@ function App() {
         <Route path="/register" component={SignUp}></Route>
         <Route path="/login" component={SignIn}></Route>
         <Route path="/game" component={Game}></Route>
-        <Route path="/canvas" component={Canvas}></Route>
       </Switch>
     </div>
   );

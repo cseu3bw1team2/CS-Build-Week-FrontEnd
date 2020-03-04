@@ -19,21 +19,13 @@ class Room {
     linkTo(ctx, room) {
         // This is important for some reasons because this method is first called withan undefined room
         if(!room) return;
-
-        // somehow calling this.position.linkNodeTo directly is causing an error.
-        // position.linkNodeTo(ctx, new Room({name:'jk', description:'fdh'})); 
-        this.position.linkNodeTo(ctx, room.position);        
-       
-        // this.position.linkNodeTo(ctx, room.position)
+        this.position.linkNodeTo(ctx, room.position);   
+        console.log('moving to '+ room.name);     
     }
 
     drawRoomOnNode(ctx) {
         const position = this.position;
         position.renderNode(ctx)
-    }
-
-    highlightRoom = (ctx) => {
-        
     }
 }
 
