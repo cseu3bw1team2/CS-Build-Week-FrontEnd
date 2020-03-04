@@ -9,7 +9,7 @@ export default function axiosAuth(options) {
   }
   const headers = {
     "Content-Type": "application/json",
-    "x-access-token": token
+    "Authorization": token
   };
   const optionsWithAuthHeader = { ...options, headers };
   //   console.log(optionsWithAuthHeader)

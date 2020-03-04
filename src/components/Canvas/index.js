@@ -1,5 +1,8 @@
 import React from 'react';
-import bg from '../../images/bg.png'
+import bg from '../../images/bg.png';
+import { get } from '../../util/controllers/data';
+import { getUrl } from '../../util/url';
+import Room from './Room';
 
 class Canvas extends React.Component {
 
@@ -7,25 +10,7 @@ class Canvas extends React.Component {
         super(props);
         console.log('init componet')
         this.state = {
-            rooms:[
-                {
-                    name: 'foyer',
-                    description:'',
-                    n_to: 'outside',
-                    s_to: 'overview',
-                    w_to: null,
-                    e_to:null,
-                },
-                {
-                    name: 'outside',
-                    description:'',
-                    n_to: null,
-                    e_to: 'overview',
-                    w_to: null,
-                    s_to:null,
-                },
-    
-            ],
+            rooms:[],
             player:{
                 uuid: 1,
                 name:'test1',
@@ -73,11 +58,16 @@ class Canvas extends React.Component {
         this.count = 0
     }
 
-    componentDidUpdate(){
-console.log("i updated")
-    }
 
     componentDidMount() {
+        const url = getUrl('GET_ROOMS');
+
+        get(url)
+        .then(res => {
+            const rooms = res.data;
+            this.setState({rooms});
+        })
+
         this.canvas = this.refs.canvas
 
       if (this.canvas.getContext) {
@@ -94,11 +84,11 @@ console.log("i updated")
             y: 200
         }
 
-        this.placePoint({x:320, y:200})
-        this.placePoint({x:370, y:200})
-        this.placePoint({x:370, y:150})
-        this.placePoint({x:320, y:150})
-        console.log(this.count)
+        // this.placePoint({x:320, y:200})
+        // this.placePoint({x:370, y:200})
+        // this.placePoint({x:370, y:150})
+        // this.placePoint({x:320, y:150})
+        // console.log(this.count)
 
 
       }
