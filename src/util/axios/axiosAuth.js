@@ -3,16 +3,16 @@ import axios from "axios";
 export default function axiosAuth(options) {
   let token = "";
   try {
-    token = JSON.parse(window.sessionStorage.getItem("token"));
+    token = JSON.parse(localStorage.getItem("token"));
   } catch (e) {
     console.log("error checking token");
   }
   const headers = {
     "Content-Type": "application/json",
-    "x-access-token": token
+    "Authorization": token
   };
   const optionsWithAuthHeader = { ...options, headers };
-  //   console.log(optionsWithAuthHeader)
+    console.log(JSON.stringify(optionsWithAuthHeader))
 
   return axios(optionsWithAuthHeader);
 }
