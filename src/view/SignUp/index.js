@@ -19,9 +19,13 @@ const SignUp = () => {
             return;
         }
         try {
-            const url = getUrl('SIGN_IN');
+            const url = getUrl('SIGN_UP');
+            console.log('url',url)
+            console.log('info',userInfo)
+
             const res = await post(url, userInfo);
-            window.sessionStorage.setItem('token',res.key);
+            console.log('jey', res)
+            localStorage.setItem('token', res.key);
             console.log(res)
             // route to the main page
             
@@ -33,8 +37,8 @@ const SignUp = () => {
   
     return (
     <MDBContainer >
-      <MDBRow >
-        <MDBCol md="6">
+      <MDBRow md="6">
+        <MDBCol >
           <MDBCard>
             <MDBCardBody>
               <form>
@@ -71,7 +75,7 @@ const SignUp = () => {
                   />
                 </div>
                 <div className="text-center py-4 mt-3">
-                  <MDBBtn onClick={handleSubmit} color="cyan" type="submit">
+                  <MDBBtn onClick={handleSubmit} color="brown" type="submit">
                     Register
                   </MDBBtn>
                 </div>

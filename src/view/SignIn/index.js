@@ -13,7 +13,7 @@ const FormPage = () => {
         try {
             const url = getUrl('SIGN_IN');
             const res = await post(url, userInfo);
-            window.sessionStorage.setItem('token',res.key);
+            localStorage.setItem('token', res.key);
             console.log(res)
             // route to the main page
             
@@ -25,11 +25,11 @@ const FormPage = () => {
 
     return (
     <MDBContainer >
-      <MDBRow >
-        <MDBCol md="6">
-          <MDBCard>
-            <MDBCardBody>
-              <form>
+      <MDBRow md="6" >
+        <MDBCol height="100%">
+          <MDBCard height="100%">
+            <MDBCardBody height="100%">
+              <form height="100%">
                 <p className="h4 text-center py-4">Sign In</p>
                 <div className="grey-text">
                   <MDBInput
@@ -53,7 +53,7 @@ const FormPage = () => {
                   />
                 </div>
                 <div className="text-center py-4 mt-3">
-                  <MDBBtn onClick={handleSubmit} color="cyan" type="submit">
+                  <MDBBtn onClick={handleSubmit} color="brown" type="submit">
                     Sign In
                   </MDBBtn>
                 </div>
