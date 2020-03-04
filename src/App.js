@@ -6,8 +6,9 @@ import SignIn from './view/SignIn';
 import Home from './view/Home';
 // import Navigation from './components/Navigation';
 import Game from './view/Game';
-// import PrivateRoute from './components/PrivateRoute';
+import PrivateRoute from './components/PrivateRoute';
 import styled from 'styled-components';
+import Start from './view/StartGame';
 
 function App() {
   return (
@@ -17,8 +18,9 @@ function App() {
         <Route exact path="/" component={Home}></Route>
         <Route path="/register" component={SignUp}></Route>
         <Route path="/login" component={SignIn}></Route>
-        {/* <PrivateRoute path="/game" component={Game}></PrivateRoute> */}
-        <Route path="/game" component={Game}></Route>
+        <PrivateRoute path="/home" component={Start}></PrivateRoute>
+        <PrivateRoute path="/game" component={Game}></PrivateRoute>
+        {/* <Route path="/game" component={Game}></Route> */}
 
       </Switch>
     </AppStyle>
