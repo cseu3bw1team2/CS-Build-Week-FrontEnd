@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from 'styled-components';
-import {MDBContainer} from 'mdbreact';
+// import {MDBContainer} from 'mdbreact';
 // import GameCard from "../components/Card/GameCard";
 import { getUrl } from "../../util/url";
 import { getWithAuth } from '../../util/controllers/data';
@@ -47,7 +47,7 @@ const Game = () => {
             {/* <h1>Hello {gameData.name}</h1> */}
              <div className="card card-cascade wider reverse">
                 <div className="view view-cascade overlay">
-                    <img className="card-img-top" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"
+                    <img className="card-img-top" src="https://s3.amazonaws.com/files.d20.io/marketplace/94857/OO3yVeWuCpaOrhzDStph4A/max.jpg?1447087347"
                     alt="Card image cap"/>
                 </div>
                 <div className="card-body card-body-cascade text-center">
@@ -58,7 +58,7 @@ const Game = () => {
                         {/* <h4 className="card-title"><strong>My adventure</strong></h4>
                         <h6 className="font-weight-bold indigo-text py-2">Room: {gameData.title}</h6>
                         <p className="card-text">Description: {gameData.description}</p> */}
-                        {/* <p className="card-text">Where do you want to move next?</p> */}
+                        <p className="card-text">Where do you want to move next?</p>
                         <button type="button" className="btn btn-brown">Left</button>
                         <button type="button" className="btn btn-brown">Up</button>
                         <button type="button" className="btn btn-brown">Right</button>
