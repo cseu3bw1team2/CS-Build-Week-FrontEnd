@@ -2,8 +2,8 @@
 import React, { useState } from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody } from 'mdbreact';
 
-import { getUrl } from "../../util/url";
-import { post } from '../../util/controllers/data';
+// import { getUrl } from "../../util/url";
+// import { post } from '../../util/controllers/data';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 
@@ -14,26 +14,27 @@ const FormPage = ({ history }) => {
     const handleSubmit = async e => {
         e.preventDefault(); 
         
-        // try {
-            // const url = getUrl('SIGN_IN');
-            // const res = await post(url, userInfo);
-            // console.log(res)
-            // localStorage.setItem('token', res.key);
-            // // route to the main page
-            // console.log('info', userInfo)
+      //   try {
+      //     const url = getUrl('SIGN_IN');
+      //     const res = await post(url, userInfo);
+      //     localStorage.setItem('token',res.key);
+      //     console.log(res)
+      //     // route to the main page
+
+      // } catch(e){
+      //     // TODO: Handle error using some notification system.
+      //     alert('Error: '+e.message);
+      // }
             axios
               .post("https://lambda-mud-test.herokuapp.com/api/login/", userInfo)
               .then(res => {
                   const { key } = res.data;
                   localStorage.setItem("token", key);
+                  // window.sessionStorage.setItem('token', key);
                   history.push("/game")
               })
               .catch(err => console.log("Error: ", err));
             
-        // } catch(e){
-        //     // TODO: Handle error using some notification system.
-        //     alert('Error: '+e.message);
-        // }
     }
 
     return (
