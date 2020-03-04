@@ -7,11 +7,11 @@ import Home from './view/Home';
 // import Navigation from './components/Navigation';
 import Game from './view/Game';
 import PrivateRoute from './components/PrivateRoute';
-// import styled from 'styled-components';
+import styled from 'styled-components';
 
 function App() {
   return (
-    <div>
+    <AppStyle>
       <Switch>
         <Route exact path="/" component={Home}></Route>
         <Route path="/register" component={SignUp}></Route>
@@ -20,17 +20,16 @@ function App() {
         {/* <Route path="/game" component={Game}></Route> */}
 
       </Switch>
-    </div>
+    </AppStyle>
   );
 }
 
 export default App;
 
-// const AppStyle = styled.div`
-// // background-image: url("https://cdn1.epicgames.com/ue/product/Screenshot/Cave_screenshot_03-1920x1080-a51d4675f0f3f82213543dd937ec5a97.png");
-// // background-color: #cccccc;
-// // // height: 100%;
-// `;
+const AppStyle = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 // function update(e){
 //   var x = e.clientX || e.touches[0].clientX
