@@ -3,6 +3,7 @@ import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody } 
 
 import { getUrl } from "../../util/url";
 import { post } from '../../util/controllers/data';
+import axios from 'axios';
 
 const SignUp = () => {
     const [userInfo, setUserInfo] = useState({});
@@ -18,21 +19,31 @@ const SignUp = () => {
             setUserInfo({...userInfo, ...{ resetPwd }});
             return;
         }
-        try {
-            const url = getUrl('SIGN_UP');
-            console.log('url',url)
-            console.log('info',userInfo)
+        // try {
+        //     const url = getUrl('SIGN_UP');
+        //     console.log('url',url)
+        //     console.log('info',userInfo)
 
-            const res = await post(url, userInfo);
-            console.log('jey', res)
-            localStorage.setItem('token', res.key);
-            console.log(res)
-            // route to the main page
+        //     const res = await post(url, userInfo);
+        //     console.log('jey', res)
+        //     localStorage.setItem('token', res.key);
+        //     console.log(res)
+        //     // route to the main page
             
-        } catch(e){
-            // TODO: Handle error using some notification system.
-            alert('Error: '+e.message);
-        }
+        // } catch(e){
+        //     // TODO: Handle error using some notification system.
+        //     alert('Error: '+e.message);
+        // }
+        console.log('info', userInfo)
+        axios
+          .post("https://lambda-mud-test.herokuapp.com/api/registration/", userInfo)
+          .then(res => {
+              console.log(res)
+              const { key } = res.data;
+              localStorage.setItem("token", key)
+              // history.push("/play");
+          })
+          .catch(err => console.log("Error: ", err));
     }
   
     return (
