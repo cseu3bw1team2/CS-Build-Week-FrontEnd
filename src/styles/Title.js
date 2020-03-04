@@ -8,4 +8,5 @@ export const Title = styled.h1`
     margin-top: 20px;
     height: auto;
     // color: white;
+    text-shadow: 2px 2px;
 `;

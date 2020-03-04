@@ -107,8 +107,8 @@ const Home = () => {
         <Card>
             <Div>
             <Title>Adventure Game</Title>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget tortor facilisis, pellentesque nisi in, molestie justo. Fusce et leo sed nisi tristique accumsan. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <StartButton to="/game">Play Game</StartButton>
+            {/* <P>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget tortor facilisis, pellentesque nisi in, molestie justo. Fusce et leo sed nisi tristique accumsan. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</P> */}
+            <P>Log in to continue your adventure or sign up to get started!</P>
             </Div>
             <GameCard>
                 <SignIn></SignIn>
@@ -122,13 +122,14 @@ const Home = () => {
 export default Home;
 
 const Card = styled.div`
-    background: white;
+    background: white  ;
     // text-align: center;
     width: 60%;
     margin: 0 auto;
     margin-top: 90px;
     // opacity: 0.7;
     height: 80%;
+    border-radius: 10px
 `;
 const Div1 = styled.div`
     // width: 20%;
@@ -146,4 +147,12 @@ const Div = styled.div`
     padding-top: 30px;
     text-align: center;
     // color: white;
+`;
+
+const P = styled.p`
+    width: 80%;
+    margin: 0 auto;
+    text-shadow: 0.4px 1px;
+    // color: red;
+    padding: 30px;
 `;
