@@ -3,7 +3,8 @@ import axios from "axios";
 export default function axiosAuth(options) {
   let token = "";
   try {
-    token = JSON.parse(localStorage.getItem("token"));
+    token = window.sessionStorage.getItem("token");
+    console.log('token', token)
   } catch (e) {
     console.log("error checking token");
   }
@@ -12,7 +13,7 @@ export default function axiosAuth(options) {
     "Authorization": token
   };
   const optionsWithAuthHeader = { ...options, headers };
-    console.log(JSON.stringify(optionsWithAuthHeader))
+    // console.log(JSON.stringify(optionsWithAuthHeader))
 
   return axios(optionsWithAuthHeader);
 }
