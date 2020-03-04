@@ -4,10 +4,10 @@ import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody } 
 import { getUrl } from "../../util/url";
 import { post } from '../../util/controllers/data';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 
-const SignUp = () => {
+const SignUp = ({ history }) => {
     const [userInfo, setUserInfo] = useState({});
-
     const hadleInput = e => setUserInfo({...userInfo,...{[e.target.name]: e.target.value}})
 
     const handleSubmit = async e => {
@@ -34,14 +34,12 @@ const SignUp = () => {
         //     // TODO: Handle error using some notification system.
         //     alert('Error: '+e.message);
         // }
-        console.log('info', userInfo)
         axios
           .post("https://lambda-mud-test.herokuapp.com/api/registration/", userInfo)
           .then(res => {
-              console.log(res)
               const { key } = res.data;
               localStorage.setItem("token", key)
-              // history.push("/play");
+              history.push("/home")
           })
           .catch(err => console.log("Error: ", err));
     }
@@ -99,4 +97,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default withRouter(SignUp);
