@@ -26,7 +26,7 @@ const FormPage = ({ history }) => {
               .then(res => {
                   const { key } = res.data;
                   localStorage.setItem("token", key);
-                  history.push("/home")
+                  history.push("/game")
               })
               .catch(err => console.log("Error: ", err));
             
@@ -43,7 +43,7 @@ const FormPage = ({ history }) => {
           <MDBCard height="100%">
             <MDBCardBody height="100%">
               <form height="100%">
-                <p className="h4 text-center py-4">Sign In</p>
+                <p className="h4 text-center py-4">Welcome Back</p>
                 <div className="grey-text">
                   <MDBInput
                     label="Username"

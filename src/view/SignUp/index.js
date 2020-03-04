@@ -39,7 +39,7 @@ const SignUp = ({ history }) => {
           .then(res => {
               const { key } = res.data;
               localStorage.setItem("token", key)
-              history.push("/home")
+              history.push("/game")
           })
           .catch(err => console.log("Error: ", err));
     }
@@ -51,7 +51,7 @@ const SignUp = ({ history }) => {
           <MDBCard>
             <MDBCardBody>
               <form>
-                <p className="h4 text-center py-4">Sign up</p>
+                <p className="h4 text-center py-4">Begin Your Adventure</p>
                 <div className="grey-text">
                   <MDBInput
                     label="Username"
