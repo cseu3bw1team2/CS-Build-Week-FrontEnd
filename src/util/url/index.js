@@ -1,8 +1,8 @@
 // export const baseUrl = "http://localhost:8000/api/v1";
-const baseUrl =  "https://lambda-mud-test.herokuapp.com/api"
+const baseUrl =  "https://tranquil-savannah-89328.herokuapp.com/api"
 
-const SIGN_IN = `${baseUrl}/login`;
-const SIGN_UP = `${baseUrl}/registration`;
+const SIGN_IN = `${baseUrl}/login/`;
+const SIGN_UP = `${baseUrl}/registration/`;
 const START_GAME = `${baseUrl}/adv/init/`
 
 

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import styled from 'styled-components';
+// import styled from 'styled-components';
 // import {MDBContainer} from 'mdbreact';
 // import GameCard from "../components/Card/GameCard";
-import { getUrl } from "../../util/url";
-import { getWithAuth } from '../../util/controllers/data';
+// import { getUrl } from "../../util/url";
+// import { getWithAuth } from '../../util/controllers/data';
 
 const Game = () => {
     const [gameData, setGameData] = useState({});
@@ -30,11 +30,11 @@ const Game = () => {
         //   fetchData();
         axios
             .create({
-                headers: { 'Authorization': 'Token ' + localStorage.getItem("token") }
+                headers: { 'Authorization': 'Token ' + window.sessionStorage.getItem("token") }
             })
             .get("https://lambda-mud-test.herokuapp.com/api/adv/init/")
             .then(res => {
-                // console.log('yo',res.data.name)
+                console.log('yo',res.data)
                 setGameData(res.data)
             })
             .catch(err => console.log("Error: ", err.message));
@@ -73,14 +73,14 @@ const Game = () => {
 export default Game;
 
 
-const GameDiv = styled.div`
-    // background: white;
-    height: 300px;
-    // width: 50%;
-    margin:0 auto;
-    text-align: center;
-    // margin-top: 100px
-    // display: felx;
-    // flex-direction: row;
-    // align-self: flex-end
-`;
+// const GameDiv = styled.div`
+//     // background: white;
+//     height: 300px;
+//     // width: 50%;
+//     margin:0 auto;
+//     text-align: center;
+//     // margin-top: 100px
+//     // display: felx;
+//     // flex-direction: row;
+//     // align-self: flex-end
+// `;

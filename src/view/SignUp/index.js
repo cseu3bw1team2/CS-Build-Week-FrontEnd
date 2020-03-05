@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody } from 'mdbreact';
 
-// import { getUrl } from "../../util/url";
-// import { post } from '../../util/controllers/data';
+import { getUrl } from "../../util/url";
+import { post } from '../../util/controllers/data';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 
@@ -20,30 +20,29 @@ const SignUp = ({ history }) => {
             setUserInfo({...userInfo, ...{ resetPwd }});
             return;
         }
-        // try {
-        //     const url = getUrl('SIGN_UP');
-        //     console.log('url',url)
-        //     console.log('info',userInfo)
-
-        //     const res = await post(url, userInfo);
-        //     console.log('jey', res)
-        //     window.sessionStorage.setItem('token', res.key);
-        //     console.log(res)
-        //     // route to the main page
-            
-        // } catch(e){
-        //     // TODO: Handle error using some notification system.
-        //     alert('Error: '+e.message);
-        // }
-        axios
-          .post("https://lambda-mud-test.herokuapp.com/api/registration/", userInfo)
-          .then(res => {
-              const { key } = res.data;
-              localStorage.setItem("token", key)
-              // eslint-disable-next-line react/prop-types
-              history.push("/game")
-          })
-          .catch(err => console.log("Error: ", err));
+        try {
+          const url = getUrl('SIGN_UP');
+          const res = await post(url, userInfo);
+          window.sessionStorage.setItem('token',res.data.key);
+          // localStorage.setItem('token', res.data.key)
+          console.log(res)
+          //  eslint-disable-next-line react/prop-types
+          history.push("/game")
+          // route to the main page
+          
+      } catch(e){
+          // TODO: Handle error using some notification system.
+          alert('Error: '+e.message);
+      }
+        // axios
+        //   .post("https://lambda-mud-test.herokuapp.com/api/registration/", userInfo)
+        //   .then(res => {
+        //       const { key } = res.data;
+        //       localStorage.setItem("token", key)
+        //       // eslint-disable-next-line react/prop-types
+        //       history.push("/game")
+        //   })
+        //   .catch(err => console.log("Error: ", err));
     }
   
     return (
@@ -60,6 +59,17 @@ const SignUp = ({ history }) => {
                     icon="user"
                     group
                     name="username"
+                    type="text"
+                    validate
+                    error="wrong"
+                    success="right"
+                    onChange={hadleInput}
+                  />
+                    <MDBInput
+                    label="Email"
+                    icon="envelope"
+                    group
+                    name="email"
                     type="text"
                     validate
                     error="wrong"

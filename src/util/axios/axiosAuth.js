@@ -4,7 +4,8 @@ export default function axiosAuth(options) {
   let token = "";
   try {
     token = window.sessionStorage.getItem("token");
-    console.log('token', token)
+    // token = localStorage.getItem('token')
+    console.log(token)
   } catch (e) {
     console.log("error checking token");
   }
@@ -13,7 +14,7 @@ export default function axiosAuth(options) {
     "Authorization": token
   };
   const optionsWithAuthHeader = { ...options, headers };
-    // console.log(JSON.stringify(optionsWithAuthHeader))
+    // console.log(optionsWithAuthHeader)
 
   return axios(optionsWithAuthHeader);
 }
