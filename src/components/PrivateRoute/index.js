@@ -3,7 +3,7 @@ import { Route, Redirect } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
 export default function PrivateRoute({ component: Component, ...rest }) {
-    const tokenKey = () => Boolean(localStorage.getItem("token"));
+    const tokenKey = () => Boolean(window.sessionStorage.getItem("token"));
 
     return (
         <Route
