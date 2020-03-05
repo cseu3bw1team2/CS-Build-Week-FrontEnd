@@ -1,0 +1,32 @@
+.canvas {
+
+    background: #000;
+    margin: 0 auto;
+    /* margin-left:200px; */
+}
+
+.btn-container {
+    width: 300px;
+    height: 150px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid grey;
+}
+
+.left-right {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-right div {
+    padding:3px 5px;
+    text-align:center;
+    width:80px;
+}
+
+.north, .south {
+    padding:3px 5px;
+    text-align:center;
+    width:80px;
+    margin: 0 auto;
+}
