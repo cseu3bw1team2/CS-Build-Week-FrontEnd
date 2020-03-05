@@ -14,35 +14,36 @@ const SignUp = ({ history }) => {
     const handleSubmit = async e => {
         e.preventDefault(); 
 
-        if(userInfo.password1 !== userInfo.password2) {
-            alert('Both passwords must be equal');
-            const resetPwd = { password1:"", password2: "" };
-            setUserInfo({...userInfo, ...{ resetPwd }});
-            return;
-        }
-        try {
-          const url = getUrl('SIGN_UP');
-          const res = await post(url, userInfo);
-          window.sessionStorage.setItem('token',res.data.key);
-          // localStorage.setItem('token', res.data.key)
-          console.log(res)
-          //  eslint-disable-next-line react/prop-types
-          history.push("/game")
-          // route to the main page
+      //   if(userInfo.password1 !== userInfo.password2) {
+      //       alert('Both passwords must be equal');
+      //       const resetPwd = { password1:"", password2: "" };
+      //       setUserInfo({...userInfo, ...{ resetPwd }});
+      //       return;
+      //   }
+      //   try {
+      //     const url = getUrl('SIGN_UP');
+      //     const res = await post(url, userInfo);
+      //     console.log(res)
+      //     window.sessionStorage.setItem('token',res.key);
+      //     // localStorage.setItem('token', res.data.key)
+      //     //  eslint-disable-next-line react/prop-types
+      //     history.push("/game")
+      //     // route to the main page
           
-      } catch(e){
-          // TODO: Handle error using some notification system.
-          alert('Error: '+e.message);
-      }
-        // axios
-        //   .post("https://lambda-mud-test.herokuapp.com/api/registration/", userInfo)
-        //   .then(res => {
-        //       const { key } = res.data;
-        //       localStorage.setItem("token", key)
-        //       // eslint-disable-next-line react/prop-types
-        //       history.push("/game")
-        //   })
-        //   .catch(err => console.log("Error: ", err));
+      // } catch(e){
+      //     // TODO: Handle error using some notification system.
+      //     alert('Error: '+e.message);
+      // }
+
+        axios
+          .post("https://lambda-mud-test.herokuapp.com/api/registration/", userInfo)
+          .then(res => {
+              const { key } = res.data;
+              window.sessionStorage.setItem('token', key);
+              // eslint-disable-next-line react/prop-types
+              history.push("/game")
+          })
+          .catch(err => console.log("Error: ", err));
     }
   
     return (

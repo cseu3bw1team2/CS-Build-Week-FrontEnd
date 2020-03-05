@@ -10,10 +10,11 @@
 const baseUrl =  "https://lambda-mud-test.herokuapp.com/api"
 
 const SIGN_IN = `${baseUrl}/login`;
-const SIGN_UP = `${baseUrl}/registeration`;
+const SIGN_UP = `${baseUrl}/registration`;
 const GET_ROOMS = `${baseUrl}/adv/rooms`;
 const GET_PLAYERS = `${baseUrl}/players`;
-const INIT_GAME = "https://lambda-mud-test.herokuapp.com/api/adv/init/";
+const INIT_GAME = `${baseUrl}/adv/init/`;
+
 export const getUrl = name => {
   switch (name) {
 

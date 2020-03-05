@@ -2,6 +2,8 @@ import Player from './Player';
 import Room from './Room';
 import { get, getWithAuth } from '../../util/controllers/data';
 import { getUrl } from '../../util/url';
+import axiosAuth from '../../util/axios/axiosAuth';
+import axios from 'axios';
 
 export const startPoint = {
     x: 500,
@@ -44,7 +46,7 @@ export const formatData = (data) => {
     return formattedData;
     
 }
-
+  
 export const initCanvas = (canvasRef) => {
     const canvas = canvasRef.getContext("2d");
     canvas.fillStyle = "#fff";
@@ -56,9 +58,19 @@ export const initCanvas = (canvasRef) => {
 export const getGameInitData = () => {
     return new Promise((resolve, reject) => {
       const url = getUrl("INIT_GAME");
-      getWithAuth(url)
-        .then(resolve)
-        .catch(reject);
+      axios
+      .create({
+        headers: { 'Authorization': 'Token ' + window.sessionStorage.getItem("token") }
+      })
+      .get(url)
+      .then(res => {
+          console.log('yo',res.data)
+          resolve(res)
+      })
+      .catch(err => console.log("Error: ", err.message));
+      // getWithAuth(url)
+      //   .then(resolve)
+      //   .catch(reject);
     });
   }
 

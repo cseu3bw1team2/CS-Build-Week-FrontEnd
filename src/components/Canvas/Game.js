@@ -24,6 +24,7 @@ class Game extends Component {
   async componentDidMount() {
       // Get Init Data
     const init = await getGameInitData();
+    console.log('init',init)
     const rooms = await getRooms();
     this.rooms = rooms;
     this.setState({ players: init.data.players });

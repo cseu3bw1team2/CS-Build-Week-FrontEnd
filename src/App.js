@@ -19,12 +19,12 @@ function App() {
         <Route exact path="/" component={Home}></Route>
         {/* <Route path="/register" component={SignUp}></Route>
         <Route path="/login" component={SignIn}></Route> */}
-        <PrivateRoute path="/game" component={Game}></PrivateRoute>
+        {/* <PrivateRoute path="/game" component={Game}></PrivateRoute> */}
         {/* <Route path="/game" component={Game}></Route> */}
         {/* <Route exact path="/">Home</Route>
         <Route path="/register" component={SignUp}></Route>
-        <Route path="/login" component={SignIn}></Route>
-        <Route path="/game" component={Game}></Route> */}
+        <Route path="/login" component={SignIn}></Route> */}
+        <Route path="/game" component={Game}></Route>
       </Switch>
     </AppStyle>
   );
