@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Player from "./Player";
 import { lineDimensions, getRooms, getGameInitData, initCanvas, startPoint } from "./helpers";
+import CanvasLoader from './CanvasLoader';
 import "./index.css";
 
 class Game extends Component {
@@ -9,7 +10,8 @@ class Game extends Component {
     this.state = {
       players: [],
       player: {},
-      rooms: []
+      rooms: [],
+      showLoader: true,
     };
 
     this.handleKeyDownEvent = this.handleKeyDownEvent.bind(this);
@@ -36,7 +38,7 @@ class Game extends Component {
     const start_room = this.rooms[0];
     // console.log('initital  start room is '+start_room.name)
     const player = new Player({ name: init.data.name, room: start_room });
-    this.setState({ player });
+    this.setState({ player, showLoader: false });
     this.drawRoomsOnCanvas(this.rooms);
 
     // Bind Keys for arrow button usage
@@ -200,8 +202,14 @@ class Game extends Component {
   renderRoomsToMap = () => {};
   
   render() {
+
     return (
-      <div>
+      <div className="game-container">
+          
+          {/* Un comment this to show an ugly loader
+         { this.state.showLoader && <CanvasLoader />}  */}
+        
+          <div style={{display: this.state.showLoader ? 'none': 'block' }}>
         <canvas className="canvas" ref="canvas" width={1080} height={450} />
         <div className="btn-container">
           <div className="north">
@@ -218,6 +226,7 @@ class Game extends Component {
           <div className="south">
             <button onClick={() => this.movePlayer("s")}>South</button>
           </div>
+        </div>
         </div>
       </div>
     );

@@ -47,8 +47,8 @@ export const formatData = (data) => {
 
 export const initCanvas = (canvasRef) => {
     const canvas = canvasRef.getContext("2d");
-    canvas.fillStyle = "#fff";
-    canvas.strokeStyle = "#fff";
+    canvas.fillStyle = "#000";
+    canvas.strokeStyle = "#000";
 
     return canvas
   }
