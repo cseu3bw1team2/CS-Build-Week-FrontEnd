@@ -12,15 +12,13 @@ class Room {
         this.e_to =  props.e_to ? props.e_to : null;
         this.linkTo = this.linkTo.bind(this);
         //points def
-        
-
     }
 
     linkTo(ctx, room) {
         // This is important for some reasons because this method is first called withan undefined room
         if(!room) return;
         this.position.linkNodeTo(ctx, room.position);   
-        console.log('moving to '+ room.name);     
+        console.log('moving to '+ room.name); 
     }
 
     drawRoomOnNode(ctx) {

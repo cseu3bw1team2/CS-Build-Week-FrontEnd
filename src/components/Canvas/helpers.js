@@ -1,8 +1,8 @@
 import Player from './Player';
 import Room from './Room';
-import { get, getWithAuth } from '../../util/controllers/data';
+import { get } from '../../util/controllers/data';
 import { getUrl } from '../../util/url';
-import axiosAuth from '../../util/axios/axiosAuth';
+// import axiosAuth from '../../util/axios/axiosAuth';
 import axios from 'axios';
 
 export const startPoint = {
@@ -56,7 +56,7 @@ export const initCanvas = (canvasRef) => {
   }
 
 export const getGameInitData = () => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       const url = getUrl("INIT_GAME");
       axios
       .create({

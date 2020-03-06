@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody } from 'mdbreact';
 
-import { getUrl } from "../../util/url";
-import { post } from '../../util/controllers/data';
+// import { getUrl } from "../../util/url";
+// import { post } from '../../util/controllers/data';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 

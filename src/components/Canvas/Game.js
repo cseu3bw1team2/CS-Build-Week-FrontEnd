@@ -9,7 +9,8 @@ class Game extends Component {
     this.state = {
       players: [],
       player: {},
-      rooms: []
+      rooms: [],
+      room: {}
     };
 
     this.handleKeyDownEvent = this.handleKeyDownEvent.bind(this);
@@ -24,7 +25,6 @@ class Game extends Component {
   async componentDidMount() {
       // Get Init Data
     const init = await getGameInitData();
-    console.log('init',init)
     const rooms = await getRooms();
     this.rooms = rooms;
     this.setState({ players: init.data.players });
@@ -35,7 +35,6 @@ class Game extends Component {
 
     // Init a new player in the first room
     const start_room = this.rooms[0];
-    // console.log('initital  start room is '+start_room.name)
     const player = new Player({ name: init.data.name, room: start_room });
     this.setState({ player });
     this.drawRoomsOnCanvas(this.rooms);
@@ -196,65 +195,43 @@ class Game extends Component {
 
   movePlayer(direction) {
     this.state.player.move(this.ctx, direction, this.rooms);
+    const newRoom = this.state.player.current_room
+    this.setState({ room: newRoom })
   };
-
+  
   renderRoomsToMap = () => {};
   
   render() {
     return (
-      // <div>
-      //   <canvas className="canvas" ref="canvas" width={1150} height={700} />
-      //   <div className="btn-container">
-      //     <div className="north">
-      //       <button onClick={() => this.movePlayer("n")}>North</button>
-      //     </div>
-      //     <div className="left-right">
-      //       <div>
-      //         <button onClick={() => this.movePlayer("w")}>West</button>
-      //       </div>
-      //       <div>
-      //         <button onClick={() => this.movePlayer("e")}>East</button>
-      //       </div>
-      //     </div>
-      //     <div className="south">
-      //       <button onClick={() => this.movePlayer("s")}>South</button>
-      //     </div>
-      //   </div>
-      // </div>
       <div>
-      {/* <h1>Hello {gameData.name}</h1> */}
-       {/* <div className="card card-cascade white"> */}
-          {/* <div className="view view-cascade overlay"> */}
-            <canvas className="canvas" ref="canvas" width={1150} height={600} />
-          {/* </div> */}
+          <canvas className="canvas" ref="canvas" width={1150} height={600} />
           <div className="controller">
-          <div className="text">
-              <h4 className="card-title"><strong>Your position</strong></h4>
-              <h6 className="font-weight-bold indigo-text py-2">Room: </h6>
-              <p className="font-weight-bold black-text">Description:</p>
-              <p className="card-text">Where do you want to move next?<br></br>Use your keys or hit the buttons to move to the next room</p>
-            </div>
-              {/* <div className="card-body card-body-cascade text-right"></div> */}
-                <div className="btn-container">
-                    <div className="north">
-                      <button className="button brown" onClick={() => this.movePlayer("n")}>North</button>
-                    </div>
-                    <div className="left-right">
-                      <div>
-                        <button className="button brown" onClick={() => this.movePlayer("w")}>West</button>
-                      </div>
-                      <div>
-                        <button className="button brown" onClick={() => this.movePlayer("e")}>East</button>
-                      </div>
-                    </div>
-                    <div className="south">
-                      <button className="button brown" onClick={() => this.movePlayer("s")}>South</button>
-                    </div>
+            {this.state.player.current_room === undefined ? null : 
+              <div className="text">
+                  <h4 className="card-title"><strong>Your position</strong></h4>
+                  <h6 className="font-weight-bold indigo-text py-2">Room: {this.state.player.current_room.name}</h6>
+                  <p className="font-weight-bold black-text">Description: {this.state.player.current_room.description} </p>
+                  <p className="card-text">Where do you want to move next?<br></br>Use your keys or hit the buttons to move to the next room</p>
                 </div>
+              }
+              <div className="btn-container">
+                  <div className="north">
+                    <button className="button brown" onClick={() => this.movePlayer("n")}>North</button>
+                  </div>
+                  <div className="left-right">
+                    <div>
+                      <button className="button brown" onClick={() => this.movePlayer("w")}>West</button>
+                    </div>
+                    <div>
+                      <button className="button brown" onClick={() => this.movePlayer("e")}>East</button>
+                    </div>
+                  </div>
+                  <div className="south">
+                    <button className="button brown" onClick={() => this.movePlayer("s")}>South</button>
+                  </div>
+              </div>
             </div>
          </div>
-      // {/* </div> */}
-    // </div>
     );
   }
 }
