@@ -64,7 +64,6 @@ export const getGameInitData = () => {
       })
       .get(url)
       .then(res => {
-          console.log('yo',res.data)
           resolve(res)
       })
       .catch(err => console.log("Error: ", err.message));
@@ -75,7 +74,6 @@ export const getGameInitData = () => {
   }
 
 export const getRooms = () => {
-    // const roomsUrl = getUrl('GET_ROOMS');
     return new Promise((resolve, reject) => {
         const url = getUrl('GET_ROOMS')
       get(url)

@@ -18,7 +18,7 @@ class Room {
         // This is important for some reasons because this method is first called withan undefined room
         if(!room) return;
         this.position.linkNodeTo(ctx, room.position);   
-        console.log('moving to '+ room.name); 
+        // console.log('moving to '+ room.name); 
     }
 
     drawRoomOnNode(ctx) {
